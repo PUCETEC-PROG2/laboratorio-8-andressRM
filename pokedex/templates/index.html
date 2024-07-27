@@ -1,35 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    {% load static %}
-    <link href="{% static 'styles.css' %}" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokédex</title>
-</head>
-<body>
-    <div class="container">
-        <div class="text-center p-4">
-            <img src="{% static 'pokedex-3d-logo.png' %}" alt="Pokédex Logo" class="img-fluid">
-        </div>
-        <div class="row">
-            {% for pokemon in pokemons %}
-            <div class="col-md-3">
-                <div class="card text-center">
-                    <a href="{% url 'pokemon' pokemon.name %}">
-                        <img src="{% static pokemon.image_url %}" class="card-img-top" alt="{{ pokemon.name|capfirst }}">
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="{% url 'pokemon' pokemon.name %}">{{ pokemon.name|capfirst }}</a></h5>
-                        </div>
-                    </a>
-                </div>
+<!-- pokedex/templates/index.html -->
+{% extends 'base.html' %}
+
+{% load static %}  <!-- Asegúrate de cargar la etiqueta estática aquí -->
+
+{% block title %}Pokédex{% endblock %}
+
+{% block content %}
+<div class="text-center p-4">
+    <img src="{% static 'pokedex-3d-logo.png' %}" alt="Pokédex Logo" class="img-fluid">
+</div>
+<div class="row">
+    {% for pokemon in pokemons %}
+    <div class="col-md-3">
+        <div class="card text-center">
+            <a href="{% url 'pokemon' pokemon.name %}">
+                <img src="{% static pokemon.image_url %}" class="card-img-top" alt="{{ pokemon.name|capfirst }}">
+            </a>
+            <div class="card-body">
+                <h5 class="card-title"><a href="{% url 'pokemon' pokemon.name %}">{{ pokemon.name|capfirst }}</a></h5>
             </div>
-            {% endfor %}
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
-
-
+    {% endfor %}
+</div>
+{% endblock %}
