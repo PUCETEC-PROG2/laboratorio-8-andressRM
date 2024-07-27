@@ -1,16 +1,12 @@
-from django.http import HttpResponse
-from django.template import loader
+# pokedex/views.py
+
+from django.shortcuts import render, get_object_or_404
 from .models import Pokemon
 
 def index(request):
     pokemons = Pokemon.objects.all()
-    template = loader.get_template('index.html')
-    return HttpResponse(template.render({'pokemons': pokemons}, request))
+    return render(request, 'index.html', {'pokemons': pokemons})
 
 def pokemon(request, pokemon_name):
-    pokemon = Pokemon.objects.get(name=pokemon_name)
-    template = loader.get_template('display_pokemon.html')
-    context = {
-        'pokemon': pokemon
-    }
-    return HttpResponse(template.render(context, request))
+    pokemon = get_object_or_404(Pokemon, name=pokemon_name)
+    return render(request, 'display_pokemon.html', {'pokemon': pokemon})
