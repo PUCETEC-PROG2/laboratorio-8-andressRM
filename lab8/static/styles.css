@@ -7,8 +7,8 @@
     text-transform: uppercase; /* Convierte el texto a mayúsculas */
 }
 
-.card-title {
-    font-family: 'Pokemon', sans-serif; /* Cambia la fuente a una fuente temática de Pokémon */
-    color: #ffcb05; /* Color amarillo */
-    text-shadow: 1px 1px 2px #3b4cca; /* Sombra azul */
+
+.card-title a {
+    color: rgb(146, 17, 17) !important;
+    text-decoration: none !important;
 }
