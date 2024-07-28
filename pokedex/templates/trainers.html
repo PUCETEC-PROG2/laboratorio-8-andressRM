@@ -1,0 +1,30 @@
+<!-- pokedex/templates/trainers.html -->
+{% extends 'base.html' %}
+
+{% block title %}Entrenadores{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Entrenadores</h1>
+    <div class="row">
+        {% for trainer in trainers %}
+        <div class="col-12 mb-4">
+            <div class="card">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{ trainer.image_url }}" class="img-fluid rounded-start" alt="{{ trainer.name }}">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ trainer.name }}</h5>
+                            <p class="card-text">Edad: {{ trainer.age }}</p>
+                            <p class="card-text">Nivel: {{ trainer.level }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
