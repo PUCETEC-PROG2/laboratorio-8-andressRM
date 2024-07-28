@@ -1,7 +1,7 @@
 <!-- pokedex/templates/index.html -->
 {% extends 'base.html' %}
 
-{% load static %}  <!-- Asegúrate de cargar la etiqueta estática aquí -->
+{% load static %}
 
 {% block title %}Pokédex{% endblock %}
 
@@ -17,12 +17,15 @@
                 <img src="{% static pokemon.image_url %}" class="card-img-top" alt="{{ pokemon.name|capfirst }}">
             </a>
             <div class="card-body">
-                <h5 class="card-title"><a href="{% url 'pokemon' pokemon.name %}">{{ pokemon.name|capfirst }}</a></h5>
+                <h5 class="card-title">
+                    <a href="{% url 'pokemon' pokemon.name %}">{{ pokemon.name|capfirst }}</a>
+                    <a href="{% url 'display_pokemon' pokemon.id %}">
+                        <i class="fa-solid fa-eye" style="color: green;"></i> <!-- Aquí cambias el color -->
+                    </a>
+                </h5>
             </div>
         </div>
     </div>
     {% endfor %}
 </div>
 {% endblock %}
-
-<!-- añadir button home!! -->
