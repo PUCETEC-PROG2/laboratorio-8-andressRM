@@ -20,19 +20,20 @@
                 <img src="{% static pokemon.image_url %}" class="card-img-top" alt="{{ pokemon.name|capfirst }}">
             </a>
             <div class="card-body">
-                <h5 class="card-title">
-                    <a href="{% url 'pokemon' pokemon.name %}">{{ pokemon.name|capfirst }}</a>
-                    <a href="{% url 'display_pokemon' pokemon.id %}">
-                        <i class="fa-solid fa-eye" style="color: green;"></i> 
-                    </a>
+                <h5 class="card-title" style="color: black; font-weight: bold;">
+                    {{ pokemon.name|capfirst }}
                 </h5>
+                <!-- Botón de ver Pokémon -->
+                <a href="{% url 'display_pokemon' pokemon.id %}" class="btn mt-2" style="background-color: #20c997; color: white;">
+                    <i class="fa-solid fa-eye"></i> Ver
+                </a>
                 <!-- Botón de editar Pokémon -->
                 <a href="{% url 'edit_pokemon' pokemon.id %}" class="btn mt-2" style="background-color: #20c997; color: white;">
-                    <i class="fa-solid fa-pen-to-square"></i> Editar 
+                    <i class="fa-solid fa-pen-to-square"></i> Editar
                 </a>
                 <!-- Botón de eliminar Pokémon -->
                 <a href="{% url 'delete_pokemon' pokemon.id %}" class="btn mt-2" style="background-color: red; color: white;">
-                    <i class="fa-solid fa-trash"></i> Eliminar 
+                    <i class="fa-solid fa-trash"></i> Eliminar
                 </a>
             </div>
         </div>
@@ -57,12 +58,14 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">{{ trainer.name }}</h5>
+                        <h5 class="card-title" style="font-weight: bold;">
+                            {{ trainer.name }}
+                        </h5>
                         <p class="card-text">Edad: {{ trainer.age }}</p>
                         <p class="card-text">Nivel: {{ trainer.level }}</p>
                         <!-- Botón de editar Entrenador -->
                         <a href="{% url 'edit_trainer' trainer.id %}" class="btn mt-2" style="background-color: #20c997; color: white;">
-                            <i class="fa-solid fa-pen-to-square"></i> Editar 
+                            <i class="fa-solid fa-pen-to-square"></i> Editar
                         </a>
                         <!-- Botón de eliminar Entrenador -->
                         <a href="{% url 'delete_trainer' trainer.id %}" class="btn mt-2" style="background-color: red; color: white;">
