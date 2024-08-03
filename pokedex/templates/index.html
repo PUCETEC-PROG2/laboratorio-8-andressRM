@@ -9,8 +9,10 @@
 <div class="text-center p-4">
     <img src="{% static 'pokedex-3d-logo.png' %}" alt="Pokédex Logo" class="img-fluid">
 </div>
+
+<!-- Lista de Pokemones -->
+<h3>Pokemones</h3>
 <div class="row">
-    <h2>Pokemones</h2>
     {% for pokemon in pokemons %}
     <div class="col-md-3">
         <div class="card text-center">
@@ -29,28 +31,38 @@
     </div>
     {% endfor %}
 </div>
-<!-- Mostrar Entrenadores -->
 
-<div class="row mt-5">
-    <h2>Entrenadores</h2>
+<!-- Enlace para agregar Pokemones -->
+<div class="mt-4">
+    <a href="{% url 'add_pokemon' %}" class="btn btn-primary">Agregar Pokémon</a>
+</div>
+
+<!-- Lista de Entrenadores -->
+<h3 class="mt-5">Entrenadores</h3>
+<div class="row">
     {% for trainer in trainers %}
-    <div class="col-md-6 mb-4">  
-        <div class="card mb-3 shadow-sm" style="border: 6px solid #ddd; border-radius: 15px;"> 
+    <div class="col-md-6">
+        <div class="card mb-4">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img src="{{ trainer.image_url.url }}" class="img-fluid rounded-start" alt="{{ trainer.name }}" style="height: 100%; width: 100%; object-fit: cover; border-radius: 15px 0 0 15px;">
+                    <img src="{{ trainer.image_url.url }}" class="img-fluid rounded-start" alt="{{ trainer.name }}">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h4 class="card-title">{{ trainer.name }}</h4>
-                        <p class="card-text" style="font-style: italic;">Edad: <span style="font-weight: bold;">{{ trainer.age }}</span></p>
-                        <p class="card-text" style="font-style: italic;">Nivel: <span style="font-weight: bold;">{{ trainer.level }}</span></p>
-                        
+                        <h5 class="card-title">{{ trainer.name }}</h5>
+                        <p class="card-text">Edad: {{ trainer.age }}</p>
+                        <p class="card-text">Nivel: {{ trainer.level }}</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     {% endfor %}
+</div>
+
+<!-- Enlace para agregar Entrenadores -->
+<div class="mt-4">
+    <a href="{% url 'add_trainer' %}" class="btn btn-primary">Agregar Entrenador</a>
 </div>
 
 {% endblock %}

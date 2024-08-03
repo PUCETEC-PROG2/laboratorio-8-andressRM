@@ -1,0 +1,15 @@
+<!-- pokedex/templates/add_pokemon.html -->
+{% extends 'base.html' %}
+
+{% block title %}Agregar Pokémon{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Agregar Pokémon</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>
+{% endblock %}

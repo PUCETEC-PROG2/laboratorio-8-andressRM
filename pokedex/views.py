@@ -1,5 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from .models import Pokemon, Trainer  
+from .forms import PokemonForm, TrainerForm
 
 def index(request):
     pokemons = Pokemon.objects.all()
@@ -19,3 +21,25 @@ def about(request):
 
 def contact(request):
     return render(request, 'contact.html')
+
+@login_required
+def add_pokemon(request):
+    if request.method == 'POST':
+        form = PokemonForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('index')  
+    else:
+        form = PokemonForm()
+    return render(request, 'add_pokemon.html', {'form': form})
+
+@login_required
+def add_trainer(request):
+    if request.method == 'POST':
+        form = TrainerForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('index')  
+    else:
+        form = TrainerForm()
+    return render(request, 'add_trainer.html', {'form': form})
