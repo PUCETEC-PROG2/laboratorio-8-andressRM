@@ -8,7 +8,9 @@
 {% block content %}
 <div class="text-center p-4">
     <img src="{% static 'pokedex-3d-logo.png' %}" alt="Pokédex Logo" class="img-fluid">
+
 </div>
+
 
 <!-- Lista de Pokemones -->
 <h3>Pokemones</h3>
@@ -17,7 +19,7 @@
     <div class="col-md-3">
         <div class="card text-center">
             <a href="{% url 'pokemon' pokemon.name %}">
-                <img src="{% static pokemon.image_url %}" class="card-img-top" alt="{{ pokemon.name|capfirst }}">
+                <img src="{{ pokemon.image_url.url }}" class="card-img-top" alt="{{ pokemon.name|capfirst }}">
             </a>
             <div class="card-body">
                 <h5 class="card-title" style="color: black; font-weight: bold;">
@@ -35,6 +37,17 @@
                 <a href="{% url 'delete_pokemon' pokemon.id %}" class="btn mt-2" style="background-color: red; color: white;">
                     <i class="fa-solid fa-trash"></i> Eliminar
                 </a>
+                <!-- Mostrar entrenador con apariencia de botón -->
+                <div class="mt-2 text-start" style="display: inline-block; background-color: #20c997; padding: 5px 10px; border-radius: 5px; color: white;">
+                    <i class="fa-solid fa-person-circle-question"></i>
+                    <span style="font-weight: bold;">
+                        {% if pokemon.trainer %}
+                            {{ pokemon.trainer.name }}
+                        {% else %}
+                            Sin entrenador
+                        {% endif %}
+                    </span>
+                </div>
             </div>
         </div>
     </div>
