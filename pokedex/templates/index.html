@@ -30,6 +30,9 @@
                 <a href="{% url 'edit_pokemon' pokemon.id %}" class="btn mt-2" style="background-color: #20c997; color: white;">
                     <i class="fa-solid fa-pen-to-square"></i> Editar 
                 </a>
+                <!-- Botón de eliminar Pokémon -->
+                <a href="{% url 'delete_pokemon' pokemon.id %}" class="btn mt-2" style="background-color: red; color: white;">
+                    <i class="fa-solid fa-trash"></i> Eliminar 
                 </a>
             </div>
         </div>
@@ -61,6 +64,9 @@
                         <a href="{% url 'edit_trainer' trainer.id %}" class="btn mt-2" style="background-color: #20c997; color: white;">
                             <i class="fa-solid fa-pen-to-square"></i> Editar 
                         </a>
+                        <!-- Botón de eliminar Entrenador -->
+                        <a href="{% url 'delete_trainer' trainer.id %}" class="btn mt-2" style="background-color: red; color: white;">
+                            <i class="fa-solid fa-trash"></i> Eliminar
                         </a>
                     </div>
                 </div>
@@ -70,7 +76,7 @@
     {% endfor %}
 </div>
 
-
+<!-- Enlace para agregar Entrenadores -->
 <div class="mt-4">
     <a href="{% url 'add_trainer' %}" class="btn btn-primary">Agregar Entrenador</a>
 </div>

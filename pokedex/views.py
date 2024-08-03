@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .models import Pokemon, Trainer  
 from .forms import PokemonForm, TrainerForm
 
@@ -69,3 +70,23 @@ def edit_trainer(request, trainer_id):
     else:
         form = TrainerForm(instance=trainer)
     return render(request, 'edit_trainer.html', {'form': form})
+
+# Vista para eliminar un Pokémon
+@login_required
+def delete_pokemon(request, pokemon_id):
+    pokemon = get_object_or_404(Pokemon, id=pokemon_id)
+    if request.method == 'POST':
+        pokemon.delete()
+        messages.success(request, 'Pokémon eliminado exitosamente.')
+        return redirect('index')
+    return render(request, 'confirm_delete.html', {'object': pokemon, 'type': 'Pokémon'})
+
+# Vista para eliminar un entrenador
+@login_required
+def delete_trainer(request, trainer_id):
+    trainer = get_object_or_404(Trainer, id=trainer_id)
+    if request.method == 'POST':
+        trainer.delete()
+        messages.success(request, 'Entrenador eliminado exitosamente.')
+        return redirect('index')
+    return render(request, 'confirm_delete.html', {'object': trainer, 'type': 'Entrenador'})
