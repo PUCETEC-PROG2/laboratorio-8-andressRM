@@ -20,7 +20,7 @@
                 <h5 class="card-title">
                     <a href="{% url 'pokemon' pokemon.name %}">{{ pokemon.name|capfirst }}</a>
                     <a href="{% url 'display_pokemon' pokemon.id %}">
-                        <i class="fa-solid fa-eye" style="color: green;"></i> <!-- Aquí cambias el color -->
+                        <i class="fa-solid fa-eye" style="color: green;"></i> 
                     </a>
                 </h5>
             </div>
@@ -28,4 +28,21 @@
     </div>
     {% endfor %}
 </div>
+<!-- Mostrar Entrenadores -->
+<div class="row mt-5">
+    <h2>Entrenadores</h2>
+    {% for trainer in trainers %}
+    <div class="col-md-3 mb-4">
+        <div class="card text-center">
+            <img src="{{ trainer.image_url.url }}" class="img-fluid rounded" alt="{{ trainer.name }}" style="width: 475px; height: 475px; object-fit: cover;">
+            <div class="card-body">
+                <h5 class="card-title">{{ trainer.name }}</h5>
+                <p class="card-text">Edad: {{ trainer.age }}</p>
+                <p class="card-text">Nivel: {{ trainer.level }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
 {% endblock %}

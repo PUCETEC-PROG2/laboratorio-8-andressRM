@@ -3,7 +3,8 @@ from .models import Pokemon, Trainer
 
 def index(request):
     pokemons = Pokemon.objects.all()
-    return render(request, 'index.html', {'pokemons': pokemons})
+    trainers = Trainer.objects.all()  # Obtenemos los entrenadores
+    return render(request, 'index.html', {'pokemons': pokemons, 'trainers': trainers})
 
 def pokemon(request, pokemon_name):
     pokemon = get_object_or_404(Pokemon, name=pokemon_name)
@@ -18,8 +19,3 @@ def about(request):
 
 def contact(request):
     return render(request, 'contact.html')
-
-# Nueva vista para mostrar los entrenadores
-def trainers(request):
-    trainers = Trainer.objects.all()
-    return render(request, 'trainers.html', {'trainers': trainers})
