@@ -26,6 +26,11 @@
                         <i class="fa-solid fa-eye" style="color: green;"></i> 
                     </a>
                 </h5>
+                <!-- Botón de editar Pokémon -->
+                <a href="{% url 'edit_pokemon' pokemon.id %}" class="btn mt-2" style="background-color: #20c997; color: white;">
+                    <i class="fa-solid fa-pen-to-square"></i> Editar 
+                </a>
+                </a>
             </div>
         </div>
     </div>
@@ -52,6 +57,11 @@
                         <h5 class="card-title">{{ trainer.name }}</h5>
                         <p class="card-text">Edad: {{ trainer.age }}</p>
                         <p class="card-text">Nivel: {{ trainer.level }}</p>
+                        <!-- Botón de editar Entrenador -->
+                        <a href="{% url 'edit_trainer' trainer.id %}" class="btn mt-2" style="background-color: #20c997; color: white;">
+                            <i class="fa-solid fa-pen-to-square"></i> Editar 
+                        </a>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -60,7 +70,7 @@
     {% endfor %}
 </div>
 
-<!-- Enlace para agregar Entrenadores -->
+
 <div class="mt-4">
     <a href="{% url 'add_trainer' %}" class="btn btn-primary">Agregar Entrenador</a>
 </div>

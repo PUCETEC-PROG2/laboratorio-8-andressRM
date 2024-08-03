@@ -43,3 +43,29 @@ def add_trainer(request):
     else:
         form = TrainerForm()
     return render(request, 'add_trainer.html', {'form': form})
+
+
+@login_required
+def edit_pokemon(request, pokemon_id):
+    pokemon = get_object_or_404(Pokemon, id=pokemon_id)
+    if request.method == 'POST':
+        form = PokemonForm(request.POST, request.FILES, instance=pokemon)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = PokemonForm(instance=pokemon)
+    return render(request, 'edit_pokemon.html', {'form': form})
+
+
+@login_required
+def edit_trainer(request, trainer_id):
+    trainer = get_object_or_404(Trainer, id=trainer_id)
+    if request.method == 'POST':
+        form = TrainerForm(request.POST, request.FILES, instance=trainer)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = TrainerForm(instance=trainer)
+    return render(request, 'edit_trainer.html', {'form': form})
