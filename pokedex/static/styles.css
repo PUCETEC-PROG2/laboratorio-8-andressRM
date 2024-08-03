@@ -6,3 +6,11 @@
     text-shadow: 2px 2px 4px #000000; 
     text-transform: uppercase; 
 }
+
+.img-jump {
+    transition: transform 0.2s ease-in-out;
+}
+
+.img-jump:hover {
+    transform: translateY(-10px);
+}

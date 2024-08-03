@@ -1,4 +1,4 @@
-<!-- pokedex/templates/index.html -->
+
 {% extends 'base.html' %}
 
 {% load static %}
@@ -8,9 +8,17 @@
 {% block content %}
 <div class="text-center p-4">
     <img src="{% static 'pokedex-3d-logo.png' %}" alt="Pokédex Logo" class="img-fluid">
-
 </div>
 
+<style>
+    .pokemon-image, .trainer-image {
+        transition: transform 0.2s;
+    }
+
+    .pokemon-image:hover, .trainer-image:hover {
+        transform: translateY(-10px);
+    }
+</style>
 
 <!-- Lista de Pokemones -->
 <h3>Pokemones</h3>
@@ -19,7 +27,7 @@
     <div class="col-md-3">
         <div class="card text-center">
             <a href="{% url 'pokemon' pokemon.name %}">
-                <img src="{{ pokemon.image_url.url }}" class="card-img-top" alt="{{ pokemon.name|capfirst }}">
+                <img src="{{ pokemon.image_url.url }}" class="card-img-top pokemon-image" alt="{{ pokemon.name|capfirst }}">
             </a>
             <div class="card-body">
                 <h5 class="card-title" style="color: black; font-weight: bold;">
@@ -67,7 +75,7 @@
         <div class="card mb-4">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img src="{{ trainer.image_url.url }}" class="img-fluid rounded-start" alt="{{ trainer.name }}">
+                    <img src="{{ trainer.image_url.url }}" class="img-fluid rounded-start trainer-image" alt="{{ trainer.name }}">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
