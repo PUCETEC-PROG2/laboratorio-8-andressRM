@@ -3,7 +3,7 @@ from .models import Pokemon, Trainer
 
 def index(request):
     pokemons = Pokemon.objects.all()
-    trainers = Trainer.objects.all()  # Obtenemos los entrenadores
+    trainers = Trainer.objects.all()  #entrenadores
     return render(request, 'index.html', {'pokemons': pokemons, 'trainers': trainers})
 
 def pokemon(request, pokemon_name):

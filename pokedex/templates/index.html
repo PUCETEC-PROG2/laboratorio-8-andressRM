@@ -30,16 +30,23 @@
     {% endfor %}
 </div>
 <!-- Mostrar Entrenadores -->
+
 <div class="row mt-5">
     <h2>Entrenadores</h2>
     {% for trainer in trainers %}
-    <div class="col-md-3 mb-4">
-        <div class="card text-center">
-            <img src="{{ trainer.image_url.url }}" class="img-fluid rounded" alt="{{ trainer.name }}" style="width: 475px; height: 475px; object-fit: cover;">
-            <div class="card-body">
-                <h5 class="card-title">{{ trainer.name }}</h5>
-                <p class="card-text">Edad: {{ trainer.age }}</p>
-                <p class="card-text">Nivel: {{ trainer.level }}</p>
+    <div class="col-md-6 mb-4">  
+        <div class="card mb-3 shadow-sm" style="border: 6px solid #ddd; border-radius: 15px;"> 
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{{ trainer.image_url.url }}" class="img-fluid rounded-start" alt="{{ trainer.name }}" style="height: 100%; width: 100%; object-fit: cover; border-radius: 15px 0 0 15px;">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ trainer.name }}</h4>
+                        <p class="card-text" style="font-style: italic;">Edad: <span style="font-weight: bold;">{{ trainer.age }}</span></p>
+                        <p class="card-text" style="font-style: italic;">Nivel: <span style="font-weight: bold;">{{ trainer.level }}</span></p>
+                        
+                </div>
             </div>
         </div>
     </div>
